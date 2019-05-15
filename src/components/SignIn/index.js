@@ -6,7 +6,7 @@ import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-import {TextInput,NavItem}from 'react-materialize';
+import {TextInput,NavItem,CardPanel}from 'react-materialize';
 
 
 
@@ -62,9 +62,13 @@ class SignInFormBase extends Component {
           <Col md="8">
             <CardGroup>
               <Card className="p-4">
-                <Card body  inverse color="info">
+                <CardBody style={{ color:'black' }}>
                   <Form onSubmit={this.onSubmit}>
-                  <div className="text-center" style={{color: 'black'}}><h1>Login</h1></div>
+                  <CardPanel className="teal">
+                      <span >
+                      <div className="text-center" style={{color: 'black'}}><h1>SIGN IN</h1></div>
+                      </span>
+                  </CardPanel>
                     <InputGroup className="mb-3">
                       <TextInput  icon="email" type="email" placeholder="Email" name = 'email' value={email}  onChange={this.onChange} />
                     </InputGroup>
@@ -72,17 +76,19 @@ class SignInFormBase extends Component {
                       <TextInput  icon="lock" type="password" placeholder="Password" name = 'password' value={password} onChange={this.onChange} />
                     </InputGroup>
                     <Row >
-                        <Col xs="6" >
-                        <div className="text-center"><Button color="dark" className="px-4">Login</Button></div>
+                        <Col xs={{ size: 7.5, offset: 5 }} >
+                        <div className="text-right"><Button  color="dark" className="text-center">Login</Button></div>
                         </Col>
                     </Row>
                     <Row>
+                    <Col xs="7" >
                     <p>
-                          <NavItem style={{color: 'black'}} href={ROUTES.PASSWORD_FORGET} >Forgot Password?</NavItem>
+                    <div className="text-right"><NavItem  style={{color: 'black'}} href={ROUTES.PASSWORD_FORGET} >Forgot Password?</NavItem></div>
                     </p>
+                    </Col>
                     </Row>
                   </Form>
-                </Card>
+                </CardBody>
               </Card>         
             </CardGroup>
           </Col>

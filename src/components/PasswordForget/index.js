@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container,Modal,ModalHeader,ModalBody,ModalFooter, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-import {TextInput,NavItem}from 'react-materialize';
+import {TextInput,CardPanel}from 'react-materialize';
 
 const PasswordForgetPage = () => (
   <div>
@@ -54,29 +54,31 @@ class PasswordForgetFormBase extends Component {
           <Col md="8">
             <CardGroup>
               <Card className="p-4">
-                <Card body  inverse color="info">
+                <CardBody style={{ color:'black' }}>
                   <Form onSubmit={this.onSubmit}>
-                  <div className="text-center" style={{color: 'black'}}><h1>Input Your Email</h1></div>
-                  <div className="center red-text">
-                      {error && <p>{error.message}</p>}
-                    </div>
+                  <CardPanel className="teal">
+                      <span >
+                      <div className="text-center" style={{color: 'black'}}><h1>RESET PASSWORD</h1></div>
+                      </span>
+                  </CardPanel>
                     <InputGroup className="mb-3">
-                      <TextInput  icon="email" type="email" placeholder="Email" name = 'email'value={this.state.email}  onChange={this.onChange} />
+                      <TextInput  icon="email" type="email" placeholder="Email" name = 'email' value={email}  onChange={this.onChange} />
                     </InputGroup>
                     <Row >
-                        <Col xs="6" >
-                        <div className="text-center"><Button color="dark" className="px-4">Reset My Password</Button></div>
+                        <Col xs={{ size: 7.5, offset: 5 }} >
+                        <div className="text-right"><Button  color="dark" className="text-center">Submit</Button></div>
                         </Col>
-                        {error && <p>{error.message}</p>}
                     </Row>
                   </Form>
-                </Card>
+                </CardBody>
               </Card>         
             </CardGroup>
           </Col>
         </Row>
       </Container>
-      
+      <div className="center red-text">
+         {error && <p>{error.message}</p>}
+      </div>
     </div>
       
     );
