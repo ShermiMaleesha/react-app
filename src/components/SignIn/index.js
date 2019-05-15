@@ -95,7 +95,11 @@ class SignInFormBase extends Component {
         </Row>
       </Container>
       <div className="center red-text">
-         {error && <p>{error.message}</p>}
+         {error && 
+        <p>
+        {error.message}
+        </p>}
+
       </div>
     </div>
     );
