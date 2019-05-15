@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardGroup, Col, Container,Modal,ModalHeader,ModalBody,ModalFooter, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import {TextInput,NavItem}from 'react-materialize';
 
 
 
 const SignInPage = () => (
   <div>
     <SignInForm />
-    <PasswordForgetLink />
     <SignUpLink />
   </div>
 );
@@ -64,43 +64,32 @@ class SignInFormBase extends Component {
               <Card className="p-4">
                 <Card body  inverse color="info">
                   <Form onSubmit={this.onSubmit}>
-                    <h1>Login</h1>
-                    <p className="text-muted">Sign In to your account</p>
+                  <div className="text-center" style={{color: 'black'}}><h1>Login</h1></div>
                     <InputGroup className="mb-3">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-user"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="email" placeholder="Email" name = 'email' value={email}  onChange={this.onChange} />
+                      <TextInput  icon="email" type="email" placeholder="Email" name = 'email' value={email}  onChange={this.onChange} />
                     </InputGroup>
                     <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="password" placeholder="Password" name = 'password' value={password} onChange={this.onChange} />
+                      <TextInput  icon="lock" type="password" placeholder="Password" name = 'password' value={password} onChange={this.onChange} />
                     </InputGroup>
+                    <Row >
+                        <Col xs="6" >
+                        <div className="text-center"><Button color="dark" className="px-4">Login</Button></div>
+                        </Col>
+                    </Row>
                     <Row>
-                      <Col xs="6">
-                        <Button color="dark" className="px-4">Login</Button>
-                      </Col>
-                      <Col xs="6" className="text-right">
-                        <Button color="link" className="px-0">Forgot password?</Button>
-                      </Col>
+                    <p>
+                          <NavItem style={{color: 'black'}} href={ROUTES.PASSWORD_FORGET} >Forgot Password?</NavItem>
+                    </p>
                     </Row>
                   </Form>
                 </Card>
-              </Card>
-              
+              </Card>         
             </CardGroup>
           </Col>
         </Row>
       </Container>
-
       <div className="center red-text">
-          {error && <p>{error.message}</p>}
+         {error && <p>{error.message}</p>}
       </div>
     </div>
     );
