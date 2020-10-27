@@ -65,7 +65,7 @@ class SignInFormBase extends Component {
                 <Card body  inverse color="info">
                   <Form onSubmit={this.onSubmit}>
                     <h1>Login</h1>
-                    <p className="text-muted">Sign In to your account</p>
+                    <p className="text-muted">Sign In</p>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
