@@ -64,11 +64,6 @@ class SignInFormBase extends Component {
               <Card className="p-4">
                 <CardBody style={{ color:'black' }}>
                   <Form onSubmit={this.onSubmit}>
-                  <CardPanel className="teal">
-                      <span >
-                      <div className="text-center" style={{color: 'black'}}><h1>SIGN IN</h1></div>
-                      </span>
-                  </CardPanel>
                     <InputGroup className="mb-3">
                       <TextInput  icon="email" type="email" placeholder="Email" name = 'email' value={email}  onChange={this.onChange} />
                     </InputGroup>
